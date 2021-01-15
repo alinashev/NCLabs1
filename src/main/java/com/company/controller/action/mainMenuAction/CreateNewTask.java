@@ -2,11 +2,18 @@ package com.company.controller.action.mainMenuAction;
 
 import com.company.controller.MenuController;
 import com.company.controller.action.Action;
+import com.company.view.PrintMenu;
+import com.company.view.View;
 
 public class CreateNewTask implements Action {
+    private View view;
+    public CreateNewTask(View view) {
+        this.view = view;
+    }
     @Override
     public void execute(MenuController controller) {
-        controller.getPrintMenu().printCreateTask();
-
+        PrintMenu printMenu = new PrintMenu();
+        printMenu.setMenuController(controller);
+        printMenu.printCreateTask();
     }
 }
