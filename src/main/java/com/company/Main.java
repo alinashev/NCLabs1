@@ -3,6 +3,7 @@ package com.company;
 import com.company.controller.InputController;
 import com.company.controller.MainController;
 import com.company.controller.MenuController;
+import com.company.view.OSNotification;
 import com.company.model.Model;
 import com.company.view.Notification;
 import com.company.view.PrintMenu;
@@ -27,8 +28,13 @@ public class Main {
         menuController.setView(view);
         menuController.fillMaps();
 
+        OSNotification osn = new OSNotification(model);
+        osn.start();
+
         PrintMenu printMenu = new PrintMenu();
         printMenu.setMenuController(menuController);
+        model.readFile();
+        view.register();
         PrintMenu.printMainMenu();
         menuController.chooseMainMenuOption(new InputController().menuOption());
     }

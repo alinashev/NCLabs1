@@ -1,8 +1,8 @@
 package com.company.model;
 
 import java.io.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.company.Observable;
 import com.company.Observer;
@@ -16,13 +16,9 @@ public class Model implements Observable {
         return taskList;
     }
 
-
-    public void newTaskList(ArrayTaskList newList) {
-        this.taskList = newList;
-    }
     public void savingData(){
         try {
-            TaskIO.writeText(taskList,new File("./tasks.txt"));
+            TaskIO.writeText(taskList,new File("\\tasks.txt"));
             notifyAllUsers();
         } catch (Exception e) {
             logger.error(e);
@@ -30,7 +26,7 @@ public class Model implements Observable {
     }
     public void readFile(){
         try {
-            TaskIO.readText(taskList,new File("./tasks.txt"));
+            TaskIO.readText(taskList,new File("\\tasks.txt"));
         } catch (Exception e) {
             logger.error(e);
         }
@@ -55,7 +51,7 @@ public class Model implements Observable {
         savingData();
 
     }
-    public void changeTime(int index, LocalDateTime starter, LocalDateTime ender, int interval){
+    public void changeTime(int index, Date starter, Date ender, int interval){
         taskList.getTask(index-1).setTime(starter,ender,interval);
         savingData();
     }
@@ -63,7 +59,8 @@ public class Model implements Observable {
         taskList.getTask(index-1).setTitle(title);
         savingData();
     }
-    public void time(LocalDateTime timer, int index ){
+
+    public void time(Date timer, int index ){
         taskList.getTask(index-1).setTime(timer);
         savingData();
     }

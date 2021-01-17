@@ -1,37 +1,36 @@
 package com.company.model;
 
-import java.time.LocalDateTime;
 import java.util.*;
 
 public class Tasks {
-    
-    public static Iterable<Task> incoming(Iterable<Task> tasks, LocalDateTime from, LocalDateTime to) {
+
+    public static Iterable<Task> incoming(Iterable<Task> tasks, Date from, Date to) {
 
         LinkedList<Task> subtaskList = new LinkedList<>();
-        LocalDateTime nextTime;
+        Date nextTime;
 
         for(Task current : tasks) {
             nextTime = current.nextTimeAfter(from);
-            if(nextTime != null && !nextTime.isAfter(to)) {
+            if(nextTime != null && !nextTime.after(to)) {
                 subtaskList.add(current);
             }
         }
         return subtaskList;
     }
 
-    public static SortedMap<LocalDateTime, Set<Task>> calendar(Iterable<Task> tasks, LocalDateTime start, LocalDateTime end) {
+    public static SortedMap<Date, Set<Task>> calendar(Iterable<Task> tasks, Date start, Date end) {
         if(tasks == null || start == null || end == null){
             throw new IllegalArgumentException();
         }
-        TreeMap<LocalDateTime, Set<Task>> calendar = new TreeMap<>();
-        LocalDateTime startTime;
+        TreeMap<Date, Set<Task>> calendar = new TreeMap<>();
+        Date startTime;
         Set<Task> setTasks;
 
         for(Task tempTask : incoming(tasks, start, end)) {
             startTime = start;
             while (true) {
                 startTime = tempTask.nextTimeAfter(startTime);
-                if(startTime == null || startTime.isAfter(end)) {
+                if(startTime == null || startTime.after(end)) {
                     break;
                 }
                 if(calendar.containsKey(startTime)) {

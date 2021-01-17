@@ -5,10 +5,8 @@ import com.company.model.Task;
 import com.company.view.Notification;
 import com.company.view.PrintMenu;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 
 public class MainController {
@@ -17,7 +15,7 @@ public class MainController {
     public void setErrorView(Notification errorView){
         this.errorView = errorView;
     }
-    DateTimeFormatter dft = DateTimeFormatter.ofPattern ("ss:mm:HH dd/MM/yyyy");
+    SimpleDateFormat ft = new SimpleDateFormat ("HH:mm:ss dd/MM/yyyy");
     public void setModel(Model model) {
         this.model = model;
     }
@@ -35,7 +33,7 @@ public class MainController {
         String title = input.nextLine();
         String time = input.nextLine();
         try{
-            LocalDateTime timen = LocalDateTime.parse(time,dft);
+            Date timen = ft.parse(time);
             Task tsk = new Task(title,timen);
             model.addTaskNoRepeat(tsk);
         }catch(Exception e){
@@ -51,8 +49,8 @@ public class MainController {
         String dateEnd = in.nextLine();
         int interval = in.nextInt();
         try {
-            LocalDateTime time = LocalDateTime.parse(dateStr,dft);
-            LocalDateTime end =  LocalDateTime.parse(dateEnd,dft);
+            Date time = ft.parse(dateStr);
+            Date end =  ft.parse(dateEnd);
             Task tsk = new Task(title,time,end,interval);
             model.addTask(tsk);
         } catch (Exception e) {
@@ -74,7 +72,7 @@ public class MainController {
     public void active(){
         Scanner active = new Scanner(System.in);
         int index = active.nextInt();
-        if(index < model.getTaskList().size() && index > 0) {
+        if(index <= model.getTaskList().size() && index > 0) {
             model.active(index);
         }else{
             errorView.logEr();
@@ -89,8 +87,8 @@ public class MainController {
         int interval = scanner.nextInt();
         int index = scanner.nextInt();
         try{
-            LocalDateTime starter = LocalDateTime.parse(start,dft);
-            LocalDateTime ender = LocalDateTime.parse(end,dft);
+            Date starter = ft.parse(start);
+            Date ender = ft.parse(end);
             model.changeTime(index,starter,ender,interval);
         }catch (Exception e){
             errorView.logEr();
@@ -103,7 +101,7 @@ public class MainController {
         String time = scanner.nextLine();
         int index = scanner.nextInt();
         try{
-            LocalDateTime timer = LocalDateTime.parse(time,dft);
+            Date timer = ft.parse(time);
             model.time(timer,index);
         }catch (Exception e){
             errorView.logEr();

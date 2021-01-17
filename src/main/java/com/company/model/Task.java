@@ -1,19 +1,19 @@
 package com.company.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Objects;
 
 public class Task implements Cloneable, Serializable {
     private String title;
-    private LocalDateTime time;
-    private LocalDateTime start;
-    private LocalDateTime end;
+    private Date time;
+    private Date start;
+    private Date end;
     private int interval;
     private boolean active;
     private boolean noRepeated;
 
-    public Task(String title, LocalDateTime time){
+    public Task(String title, Date time){
         if(time != null) {
             this.title = title;
             this.time = time;
@@ -23,7 +23,7 @@ public class Task implements Cloneable, Serializable {
         }
     }
 
-    public Task(String title, LocalDateTime start, LocalDateTime end, int interval){
+    public Task(String title, Date start, Date end, int interval){
         this.title = title;
         this.start = start;
         this.end = end;
@@ -47,22 +47,22 @@ public class Task implements Cloneable, Serializable {
     }
 
 
-    public LocalDateTime getTime(){
+    public Date getTime(){
         if(isRepeated()) return start;
         else return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(Date time) {
         this.time = time;
         if(isRepeated()) noRepeated = true;
     }
 
-    public LocalDateTime getStartTime() {
+    public Date getStartTime() {
         if(!isRepeated()) return time;
         else return start;
     }
 
-    public LocalDateTime getEndTime() {
+    public Date getEndTime() {
         if(!isRepeated()) return time;
         else return end;
     }
@@ -72,7 +72,7 @@ public class Task implements Cloneable, Serializable {
         else return interval;
     }
 
-    public void setTime(LocalDateTime start, LocalDateTime end, int interval){
+    public void setTime(Date start, Date end, int interval){
         if(start == null || end == null){
             throw new IllegalArgumentException();
         }else{
@@ -88,35 +88,48 @@ public class Task implements Cloneable, Serializable {
         return !noRepeated;
     }
 
-    public LocalDateTime nextTimeAfter(LocalDateTime current){
-        if(current == null){
-            throw new IllegalArgumentException();
-        }
-        if(!isActive()){
-            return null;
-        }else{
-            if(!isRepeated()){
-                if(time.isAfter(current)){
+    public Date nextTimeAfter(Date current){
+        if (active) {
+            if (noRepeated) {
+                if (time.after(current)) {
                     return time;
-                }
-                else return null;
-            }
-            else{
-                LocalDateTime timeSum = start;
-                while(!current.isBefore(timeSum)){
-                    timeSum = timeSum.plusSeconds(interval);
-                }
-                if(end.isBefore(timeSum)){
+                } else {
                     return null;
                 }
-                else return timeSum;
+            } else {
+                Date hold = (Date) start.clone();
+                while (hold.before(current) || hold.equals(current)) {
+                    hold.setTime(hold.getTime() + interval * 1000);
+                }
+                if (hold.after(end)) {
+                    return null;
+                } else {
+                    return hold;
+                }
+            }
+        } else {
+            return null;
+        }
+    }
+    public boolean isScheduled(Date current){
+        if(noRepeated){
+            if(time.after(current)){
+                return true;
+            }else {
+                return false;
+            }
+        }else {
+            if(end.after(current)){
+                return true;
+            }else{
+                return false;
             }
         }
     }
 
     @Override
     public String toString() {
-        return "com.company.model.Task{" +
+        return "Task{" +
                 "title='" + title + '\'' +
                 ", time=" + time +
                 ", start=" + start +

@@ -12,6 +12,6 @@ public class ShowScheduledTasks implements Action {
     }
     @Override
     public void execute(MenuController controller) {
-
+        view.displayScheduledTasks();
     }
 }

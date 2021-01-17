@@ -1,14 +1,10 @@
 package com.company.view;
 
 import com.company.controller.InputController;
-import com.company.controller.MainController;
 import com.company.controller.MenuController;
 
-
-import java.awt.*;
-
 public class PrintMenu {
-    private MenuController menuController;
+    private static MenuController menuController;
 
     public MenuController getMenuController() {
         return menuController;
@@ -25,6 +21,8 @@ public class PrintMenu {
         System.out.println("4 - Show current tasks");
         System.out.println("5 - Show scheduled tasks");
         System.out.println("6 - Exit");
+        menuController.chooseMainMenuOption(new InputController().menuOption());
+
     }
     public void printCreateTask(){
         System.out.println("1 - Repeated");
@@ -35,11 +33,11 @@ public class PrintMenu {
     public static void printChangeTasks(){
         System.out.println("Please, enter the number of tasks (Change)");
         System.out.println("Choose the number 1 - 5 :");
-        System.out.println("1. Executing time of no repeating task");
-        System.out.println("2. Time of repeating task");
-        System.out.println("3. Title");
-        System.out.println("4. Activity");
-        System.out.println("5. Go back");
-        //todo: add change task controller
+        System.out.println("1 - Executing time of no repeating task");
+        System.out.println("2 - Time of repeating task");
+        System.out.println("3 - Title");
+        System.out.println("4 - Activity");
+        System.out.println("5 - Go back");
+        menuController.chooseEditOption(new InputController().menuOption());
     }
 }

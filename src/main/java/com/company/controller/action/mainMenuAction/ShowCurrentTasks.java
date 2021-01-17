@@ -12,6 +12,6 @@ public class ShowCurrentTasks implements Action {
     }
     @Override
     public void execute(MenuController controller) {
-
+        view.displayTasks();
     }
 }

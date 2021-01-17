@@ -1,18 +1,17 @@
-package com.company.controller.action.mainMenuAction;
+package com.company.controller.action.updateAction;
 
 import com.company.controller.MenuController;
 import com.company.controller.action.Action;
-import com.company.view.PrintMenu;
 import com.company.view.View;
 
-public class EditTask implements Action {
+public class TimeRepeatedTaskEditor implements Action {
     private View view;
 
-    public EditTask(View view) {
+    public TimeRepeatedTaskEditor(View view) {
         this.view = view;
     }
     @Override
     public void execute(MenuController controller) {
-        PrintMenu.printChangeTasks();
+        view.exec();
     }
 }
