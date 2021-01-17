@@ -16,9 +16,9 @@ public class OSNotification extends Thread{
     public OSNotification(Model model) {
         this.model = model;
     }
-    SystemTray tray;
-    Image image;
-    TrayIcon trayIcon;
+    private SystemTray tray;
+    private Image image;
+    private TrayIcon trayIcon;
 
     public void run(){
         if(SystemTray.isSupported()){
