@@ -113,17 +113,9 @@ public class Task implements Cloneable, Serializable {
     }
     public boolean isScheduled(Date current){
         if(noRepeated){
-            if(time.after(current)){
-                return true;
-            }else {
-                return false;
-            }
+            return time.after(current);
         }else {
-            if(end.after(current)){
-                return true;
-            }else{
-                return false;
-            }
+            return end.after(current);
         }
     }
 
