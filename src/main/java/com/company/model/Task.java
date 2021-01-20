@@ -10,7 +10,7 @@ public class Task implements Cloneable, Serializable {
     private Date start;
     private Date end;
     private int interval;
-    private boolean active;
+    private boolean active = true;
     private boolean noRepeated;
 
     public Task(String title, Date time){
