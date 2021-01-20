@@ -18,7 +18,7 @@ public class Model implements Observable {
 
     public void savingData(){
         try {
-            TaskIO.writeText(taskList,new File("\\tasks.txt"));
+            TaskIO.writeText(taskList,new File(Constants.FILE_PATH));
             notifyAllUsers();
         } catch (Exception e) {
             logger.error(e);
@@ -26,7 +26,7 @@ public class Model implements Observable {
     }
     public void readFile(){
         try {
-            TaskIO.readText(taskList,new File("\\tasks.txt"));
+            TaskIO.readText(taskList,new File(Constants.FILE_PATH));
         } catch (Exception e) {
             logger.error(e);
         }
