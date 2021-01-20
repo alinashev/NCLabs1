@@ -1,5 +1,6 @@
 package com.company.view;
 
+import com.company.model.Constants;
 import com.company.model.Model;
 import com.company.model.Task;
 import com.company.model.Tasks;
@@ -48,9 +49,11 @@ public class OSNotification extends Thread{
             }
             String message = sb.toString();
             if(message.length() != 0) {
-                if(SystemTray.isSupported())
+                if(SystemTray.isSupported()) {
                     trayIcon.displayMessage("Notification", message, TrayIcon.MessageType.INFO);
+                }
                 else Notify.create().title("Notification").text(message).showInformation();
+                System.out.println(Constants.ANSI_BLUE + "[Notification]: " + message + Constants.ANSI_RESET);
             }
         }
     }
