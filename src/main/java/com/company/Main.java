@@ -28,8 +28,9 @@ public class Main {
         menuController.setView(view);
         menuController.fillMaps();
 
-        OSNotification osn = new OSNotification(model);
-        osn.start();
+        Thread thread = new Thread(new OSNotification(model));
+        thread.setDaemon(true);
+        thread.start();
 
         PrintMenu printMenu = new PrintMenu();
         printMenu.setMenuController(menuController);
