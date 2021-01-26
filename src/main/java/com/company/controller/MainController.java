@@ -15,7 +15,7 @@ public class MainController {
     public void setErrorView(Notification errorView){
         this.errorView = errorView;
     }
-    SimpleDateFormat ft = new SimpleDateFormat ("HH:mm:ss dd/MM/yyyy");
+    SimpleDateFormat ft = new SimpleDateFormat ("HH:mm dd/MM/yyyy");
     public void setModel(Model model) {
         this.model = model;
     }
