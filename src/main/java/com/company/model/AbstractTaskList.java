@@ -17,7 +17,13 @@ public abstract class AbstractTaskList implements Iterable, Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        return true;
     }
 
     @Override

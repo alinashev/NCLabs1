@@ -70,7 +70,9 @@ public class ArrayTaskList extends AbstractTaskList implements Cloneable {
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(tasksList);
+        int hash = 3;
+        hash = 47 * hash + ((tasksList != null) ? tasksList.hashCode() : 0);
+        return hash;
     }
 
 
@@ -86,7 +88,7 @@ public class ArrayTaskList extends AbstractTaskList implements Cloneable {
 
     @Override
     public String toString() {
-        return super.toString();
+        return Arrays.toString(tasksList);
     }
 
 }
