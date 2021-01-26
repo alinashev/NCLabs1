@@ -58,8 +58,10 @@ public class View implements Observer {
     public void repeatTasks() {
         System.out.println("Enter:");
         System.out.println("Title");
-        System.out.println("Time of a new task hh:mm dd/MM/yyyy");
-        System.out.println("Task end time hh:mm dd/MM/yyyy");
+        System.out.println("Time of a new task hh:mm");
+        System.out.println("Date of a new task dd/MM/yyyy");
+        System.out.println("Task end time hh:mm");
+        System.out.println("Task end date dd/MM/yyyy");
         System.out.println("Set an interval in seconds");
         mainController.menuOfAddingRepeatedTasks();
     }
@@ -67,7 +69,8 @@ public class View implements Observer {
     public void norepeat(){
         System.out.println("Enter:");
         System.out.println("Title");
-        System.out.println("Time hh:mm dd/MM/yyyy");
+        System.out.println("Time hh:mm ");
+        System.out.println("Date dd/MM/yyyy");
         mainController.menuOfNoRepeatTasks();
     }
 
@@ -88,15 +91,18 @@ public class View implements Observer {
     }
     public void time(){
         displayTasksForRemoving();
-        System.out.println("Set the time hh:mm dd/MM/yyyy");
+        System.out.println("Set the time hh:mm");
+        System.out.println("Set the date dd/MM/yyyy");
         System.out.println("Choose the index of your task:");
         mainController.time();
     }
     public void exec(){
         displayTasksForRemoving();
         System.out.println("Firstly choose the taks beforehand and enter:");
-        System.out.println("Start time hh:mm dd/MM/yyyy");
-        System.out.println("End time hh:mm dd/MM/yyyy");
+        System.out.println("Start time hh:mm");
+        System.out.println("Start date dd/MM/yyyy");
+        System.out.println("End time hh:mm");
+        System.out.println("End date dd/MM/yyyy");
         System.out.println("Interval");
         System.out.println("Index of the task");
         mainController.exec();

@@ -32,8 +32,9 @@ public class MainController {
         Scanner input = new Scanner(System.in);
         String title = input.nextLine();
         String time = input.nextLine();
+        String date = input.nextLine();
         try{
-            Date timen = ft.parse(time);
+            Date timen = ft.parse(time + " " + date);
             Task tsk = new Task(title,timen);
             model.addTaskNoRepeat(tsk);
         }catch(Exception e){
@@ -45,12 +46,14 @@ public class MainController {
     public void menuOfAddingRepeatedTasks()  {
         Scanner in = new Scanner(System.in);
         String title = in.nextLine();
-        String dateStr = in.nextLine();
-        String dateEnd = in.nextLine();
+        String dateStrTime = in.nextLine();
+        String dateStrDate = in.nextLine();
+        String dateEndTime = in.nextLine();
+        String dateEndDate= in.nextLine();
         int interval = in.nextInt();
         try {
-            Date time = ft.parse(dateStr);
-            Date end =  ft.parse(dateEnd);
+            Date time = ft.parse(dateStrTime + " " + dateStrDate);
+            Date end =  ft.parse(dateEndTime + " " + dateEndDate);
             Task tsk = new Task(title,time,end,interval);
             model.addTask(tsk);
         } catch (Exception e) {
@@ -82,13 +85,15 @@ public class MainController {
     }
     public void exec(){
         Scanner scanner = new Scanner(System.in);
-        String start = scanner.nextLine();
-        String end = scanner.nextLine();
+        String startTime = scanner.nextLine();
+        String startDate = scanner.nextLine();
+        String endTime = scanner.nextLine();
+        String endDate = scanner.nextLine();
         int interval = scanner.nextInt();
         int index = scanner.nextInt();
         try{
-            Date starter = ft.parse(start);
-            Date ender = ft.parse(end);
+            Date starter = ft.parse(startTime + " " + startDate);
+            Date ender = ft.parse(endTime + " " + endDate);
             model.changeTime(index,starter,ender,interval);
         }catch (Exception e){
             errorView.logEr();
@@ -99,9 +104,10 @@ public class MainController {
     public void time(){
         Scanner scanner = new Scanner(System.in);
         String time = scanner.nextLine();
+        String date = scanner.nextLine();
         int index = scanner.nextInt();
         try{
-            Date timer = ft.parse(time);
+            Date timer = ft.parse(time + " " + date);
             model.time(timer,index);
         }catch (Exception e){
             errorView.logEr();
