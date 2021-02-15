@@ -6,7 +6,11 @@ import com.company.view.View;
 
 public class ShowCurrentTasks implements Action {
     private View view;
-
+    /**
+     * Instantiates a new Show current tasks.
+     *
+     * @param view the view object
+     */
     public ShowCurrentTasks(View view) {
         this.view = view;
     }

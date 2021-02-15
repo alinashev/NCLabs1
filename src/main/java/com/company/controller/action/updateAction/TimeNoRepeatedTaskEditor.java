@@ -6,7 +6,11 @@ import com.company.view.View;
 
 public class TimeNoRepeatedTaskEditor implements Action {
     private View view;
-
+    /**
+     * Instantiates a new Time no repeated task editor.
+     *
+     * @param view the view object
+     */
     public TimeNoRepeatedTaskEditor(View view) {
         this.view = view;
     }

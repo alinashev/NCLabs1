@@ -21,11 +21,17 @@ public class View implements Observer {
         displayTasks();
     }
 
+    /**
+     * Register current class as "subscriber according to Observer pattern".
+     */
     public void register() {
 
         mainController.getModel().registerUsers(this);
     }
 
+    /**
+     * Display tasks.
+     */
     public void displayTasks(){
         for(int i = 0; i < mainController.getModel().getTaskList().size(); i++) {
             System.out.println((i+1) + "." + mainController.getModel().getTaskList().getTask(i).toString());
@@ -34,11 +40,18 @@ public class View implements Observer {
         PrintMenu.printMainMenu();
     }
 
+    /**
+     * Display tasks for removing.
+     */
     public void displayTasksForRemoving(){
         for(int i = 0; i < mainController.getModel().getTaskList().size(); i++) {
             System.out.println((i+1) + "." + mainController.getModel().getTaskList().getTask(i).toString());
         }
     }
+
+    /**
+     * Display scheduled tasks.
+     */
     public void displayScheduledTasks(){
         int counter = 1;
         for(int i = 0; i < mainController.getModel().getTaskList().size(); i++) {
@@ -48,6 +61,10 @@ public class View implements Observer {
         }
         PrintMenu.printMainMenu();
     }
+
+    /**
+     * Method prints menu of removing task.
+     */
     public void remove(){
         String remover = "Write the index of the task to remove it from your list.";
         System.out.println(remover);
@@ -55,6 +72,9 @@ public class View implements Observer {
         mainController.remove();
     }
 
+    /**
+     * Method prints menu of changing repeated task.
+     */
     public void repeatTasks() {
         System.out.println("Enter:");
         System.out.println("Title");
@@ -66,6 +86,9 @@ public class View implements Observer {
         mainController.menuOfAddingRepeatedTasks();
     }
 
+    /**
+     * Method prints menu of changing not repeated task.
+     */
     public void norepeat(){
         System.out.println("Enter:");
         System.out.println("Title");
@@ -74,21 +97,36 @@ public class View implements Observer {
         mainController.menuOfNoRepeatTasks();
     }
 
+    /**
+     * Method prints choosing task and calls switching an activity.
+     */
     public void active(){
         displayTasksForRemoving();
         System.out.println("Choose the task: ");
         mainController.active();
     }
+
+    /**
+     * Method prints information of getting back stage.
+     */
     public void ret(){
         System.out.println("Returning back");
         PrintMenu.printMainMenu();
     }
+
+    /**
+     * Method prints menu of changing title.
+     */
     public void title(){
         displayTasksForRemoving();
         System.out.println("Write a new title of your task");
         System.out.println("Choose the index of the task");
         mainController.title();
     }
+
+    /**
+     * Method prints menu of changing time.
+     */
     public void time(){
         displayTasksForRemoving();
         System.out.println("Set the time hh:mm");
@@ -96,6 +134,10 @@ public class View implements Observer {
         System.out.println("Choose the index of your task:");
         mainController.time();
     }
+
+    /**
+     * Method prints menu of changing repeated task.
+     */
     public void exec(){
         displayTasksForRemoving();
         System.out.println("Firstly choose the taks beforehand and enter:");

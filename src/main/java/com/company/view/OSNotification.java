@@ -14,6 +14,12 @@ import java.util.Iterator;
 public class OSNotification extends Thread{
     private Model model;
     public static Logger logger = Logger.getLogger(OSNotification.class);
+
+    /**
+     * Instantiates a new Os notification.
+     *
+     * @param model the model object
+     */
     public OSNotification(Model model) {
         this.model = model;
     }

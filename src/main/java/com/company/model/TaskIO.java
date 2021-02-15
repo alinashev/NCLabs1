@@ -7,6 +7,12 @@ import java.io.*;
 public class TaskIO {
     private static Gson gson = new Gson();
 
+    /**
+     * Write text.
+     *
+     * @param tasks the tasks
+     * @param file  the file
+     */
     public static void writeText(AbstractTaskList tasks, File file) {
         String line = gson.toJson(tasks);
         try (FileWriter fileWriter = new FileWriter(file)) {
@@ -22,6 +28,12 @@ public class TaskIO {
         }
     }
 
+    /**
+     * Read text.
+     *
+     * @param tasks the tasks
+     * @param file  the file
+     */
     public static void readText(AbstractTaskList tasks, File file) {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line = reader.readLine();

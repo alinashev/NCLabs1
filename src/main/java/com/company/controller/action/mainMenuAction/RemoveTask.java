@@ -6,7 +6,11 @@ import com.company.view.View;
 
 public class RemoveTask implements Action {
     private View view;
-
+    /**
+     * Instantiates a new Remove task.
+     *
+     * @param view the view object
+     */
     public RemoveTask(View view) {
         this.view = view;
     }

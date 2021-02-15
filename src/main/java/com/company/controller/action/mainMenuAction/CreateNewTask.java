@@ -7,6 +7,11 @@ import com.company.view.View;
 
 public class CreateNewTask implements Action {
     private View view;
+    /**
+     * Instantiates a new Create new task.
+     *
+     * @param view the view object
+     */
     public CreateNewTask(View view) {
         this.view = view;
     }

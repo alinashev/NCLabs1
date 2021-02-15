@@ -7,7 +7,11 @@ import com.company.view.View;
 
 public class EditTask implements Action {
     private View view;
-
+    /**
+     * Instantiates a new Edit task.
+     *
+     * @param view the view object
+     */
     public EditTask(View view) {
         this.view = view;
     }

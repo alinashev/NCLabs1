@@ -16,18 +16,39 @@ public class MainController {
         this.errorView = errorView;
     }
     SimpleDateFormat ft = new SimpleDateFormat ("HH:mm dd/MM/yyyy");
+
+    /**
+     * Sets model.
+     *
+     * @param model the model
+     */
     public void setModel(Model model) {
         this.model = model;
     }
 
+    /**
+     * Gets model.
+     *
+     * @return the model
+     */
     public Model getModel() {
         return model;
     }
 
+    /**
+     * Printer string waiting for input string from users's console and returns the same one.
+     *
+     * @return the string
+     */
     public String printer (){
         Scanner input = new Scanner(System.in);
         return input.next();
     }
+
+    /**
+     * Menu of no repeat tasks.
+     * Method reads title, time, date of not repeated task, and converts according to the date pattern.
+     */
     public void menuOfNoRepeatTasks() {
         Scanner input = new Scanner(System.in);
         String title = input.nextLine();
@@ -43,6 +64,12 @@ public class MainController {
             menuOfNoRepeatTasks();
         }
     }
+
+    /**
+     * Menu of adding repeated tasks.
+     * Method reads title, start time, start date, ent time, end date of  repeated task,
+     * and converts according to the date pattern.
+     */
     public void menuOfAddingRepeatedTasks()  {
         Scanner in = new Scanner(System.in);
         String title = in.nextLine();
@@ -61,6 +88,10 @@ public class MainController {
             this.menuOfAddingRepeatedTasks();
         }
     }
+
+    /**
+     * Remove method reads an index of the task from given list and removes one.
+     */
     public void remove() {
         Scanner rin = new Scanner(System.in);
         int index = rin.nextInt();
@@ -72,6 +103,10 @@ public class MainController {
             PrintMenu.printMainMenu();
         }
     }
+
+    /**
+     * Active method changes an activity of given task.
+     */
     public void active(){
         Scanner active = new Scanner(System.in);
         int index = active.nextInt();
@@ -83,6 +118,10 @@ public class MainController {
         }
 
     }
+
+    /**
+     * Exec method changes time and date of repeated task.
+     */
     public void exec(){
         Scanner scanner = new Scanner(System.in);
         String startTime = scanner.nextLine();
@@ -101,6 +140,10 @@ public class MainController {
         }
 
     }
+
+    /**
+     * Time method changes time and date of not repeated task.
+     */
     public void time(){
         Scanner scanner = new Scanner(System.in);
         String time = scanner.nextLine();
@@ -115,6 +158,10 @@ public class MainController {
         }
 
     }
+
+    /**
+     * Title method changes the title of given task.
+     */
     public void title(){
         Scanner scanner = new Scanner(System.in);
         String title = scanner.nextLine();

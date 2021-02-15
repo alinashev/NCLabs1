@@ -44,6 +44,10 @@ public class MenuController {
     private Map<Integer, Action> addMenu = new HashMap<>();
     private Map<Integer, Action> changeTask = new HashMap<>();
 
+    /**
+     * Fill maps method that adds new elements of menu to the appropriate map.
+     * The method is part of the Command/Action pattern
+     */
     public void fillMaps(){
         menu.put(1, new CreateNewTask(view));
         menu.put(2, new EditTask(view));
@@ -63,6 +67,11 @@ public class MenuController {
         changeTask.put(5, new BackToMainMenu(view));
     }
 
+    /**
+     * Choose main menu option.
+     *
+     * @param choice an integer which match to an item from the menu.
+     */
     public void chooseMainMenuOption(int choice){
         if (choice > 0 & choice <= menu.size()){
             menu.get(choice).execute(this);
@@ -71,6 +80,12 @@ public class MenuController {
             chooseMainMenuOption(new InputController().menuOption());
         }
     }
+
+    /**
+     * Choose task type.
+     *
+     * @param choice an integer which match to an item from the menu.
+     */
     public void chooseTaskType(int choice){
         if (choice > 0 & choice <= addMenu.size()){
             addMenu.get(choice).execute(this);
@@ -79,6 +94,12 @@ public class MenuController {
             chooseMainMenuOption(new InputController().menuOption());
         }
     }
+
+    /**
+     * Choose edit option.
+     *
+     * @param choice an integer which match to an item from the menu.
+     */
     public void chooseEditOption(int choice){
         if (choice > 0 & choice <= changeTask.size()){
             changeTask.get(choice).execute(this);
@@ -87,6 +108,10 @@ public class MenuController {
             chooseEditOption(new InputController().menuOption());
         }
     }
+
+    /**
+     * Exit app method that terminates the application.
+     */
     public void exitApp(){
         Notification.exitStatus();
         System.exit(0);
